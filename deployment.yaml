@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tanzuapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tanzuapp
+  template:
+    metadata:
+      labels:
+        app: tanzuapp
+    spec:
+      containers:
+      - name: tanzuapp
+        image: localhost:5000/tanzuapp  # Esta URL debe ser accesible desde Kubernetes (ver en docker engine)
+        ports:
+        - containerPort: 3000
